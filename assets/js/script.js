@@ -46,15 +46,16 @@ function renderRecents() {
     }
   };
   
+// Adds event listener for search button
 searchBtn.addEventListener("click", () => {
     var userInput = inputValue.val().trim();
     if (userInput !== "") {
-      getWeather(searchInput.value);
-      setLocalStorage(searchInput.value);
-  renderRecents();
-      inputValue.val("");
+        getWeather(searchInput.value);
+        setLocalStorage(searchInput.value);
+        renderRecents();
+        inputValue.val("");
     } else if (userInput == "") {
-  alert("Please enter a city!");
+    alert("Please enter a city!");
     }
   });
 

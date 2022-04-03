@@ -21,28 +21,27 @@
 
     <main>
       <div class="sidebar">
-        <h2 class="city-search-header">Search for a City:</h2>
-          <form class="city-search">
-          <input type="text" id="user-input" placeholder="Please enter city name"/>
+        <div>
+          <h3 class="city-search-header">Search for a City:</h3>
+          <input type="text" class="user-input" placeholder="Please enter city name"/>
           <br>
-          <button id="search-button" type="button">Search</button>
-          </form>
-          <form id="recent"></form>
-      </div>
-
-      <div class="main-content">
-        <div class="current-weather">
-          <h2 class="city-date-icon"></h2>
-          <p class="temp"></p>
-          <p class="humidity"></p>
-          <p class="wind"></p>
-          <p class="uv-index">UV Index:</p>
+          <button class="search-button" type="button">Search</button>
+          <ul class="cities">
+          </ul>
         </div>
 
-        <div class="forecast">
-          <h3 class="forecast-header"></h3>
-          <br>
-          <div id="cards"></div>
+        <div class="main-content">
+          <div class="current-weather">
+            <h2 class="city-date-icon"></h2>
+            <p class="temp"></p>
+            <p class="humidity"></p>
+            <p class="wind"></p>
+            <p class="uv-index"></p>
+          </div>
+
+          <div class="forecast">
+            <div id="cards"></div>
+          </div>
         </div>
       </div>
     </main>

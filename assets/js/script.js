@@ -12,6 +12,7 @@ var wind = document.querySelector(".wind");
 var uv = document.querySelector(".uv-index");
 var recentSearches = JSON.parse(localStorage.getItem("recent") || "[]");
 
+// Pulls up recent searches
 function renderRecents() {
     recentContainer.empty();
   
@@ -29,3 +30,19 @@ function renderRecents() {
   }
 
   renderRecents();
+
+//   Allows for the handling of the search button, including fetching weather info
+  var searchSubmit = function (event) {
+    event.preventDefault;
+  
+    var city = searchInput.value.trim();
+  
+    if (city) {
+      getCityWeather(city);
+  
+      searchInput.value = "";
+    } else if (userInput == "") {
+      alert("Enter city name.");
+    }
+  };
+  

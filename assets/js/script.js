@@ -62,3 +62,45 @@ searchBtn.addEventListener("click", async function () {
           alert("Error: " + response.statusText);
         }
 });
+
+async function uvIndex(lat, lon) {
+    var uviUrl =
+      "https://api.openweathermap.org/data/2.5/onecall?lat=" +
+      lat +
+      "&lon=" +
+      lon +
+      "&APPID=ba4fa4c728612b9010e8b52c2869c55a";
+    var response = await fetch(uviUrl);
+  
+    if (response.ok) {
+      console.log(response);
+      var data = await response.json();
+      console.log(data);
+      var uviValue = data.current.uv;
+      var fiveDayData = data.daily;
+      console.log(fiveDayData);
+      uv.innerHTML = "UV Index: " + uviValue;
+      var cardString = '';
+      for (var i = 0; i < fiveDayData.length; i++) {
+          if(i >= 5)
+              break; 
+          var cardData = fiveDayData[i];
+          var cardTemp = cardData.temp.day;
+          var cardHumidity = cardData.humidity;
+          var iconImage = cardData.weather[0].icon;
+          var weatherURL =`http://openweathermap.org/img/wn/${iconImage}.png`;
+          var icon = `<img src="${weatherURL}" style="width: 75px"/>`;
+          cardString += `
+              <div class="card" style="flex: 1">
+                  <h6>${moment(new Date(cardData.dt * 1000)).format(" M/DD/YYYY")}</h6>
+                      ${icon}
+                  <p>Temp: ${cardTemp}&deg;F</p>
+                  <p>Humidity: ${cardHumidity}%</p>
+              </div>
+          `
+  
+      }
+      console.log(cardString);
+      var fiveDayCardContainer = document.querySelector("#cards");
+      fiveDayCardContainer.innerHTML = cardString; 
+}};

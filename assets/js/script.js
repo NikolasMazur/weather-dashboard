@@ -46,3 +46,20 @@ function renderRecents() {
     }
   };
   
+searchBtn.addEventListener("click", () => {
+    var userInput = inputValue.val().trim();
+    if (userInput !== "") {
+      getWeather(searchInput.value);
+      setLocalStorage(searchInput.value);
+  renderRecents();
+      inputValue.val("");
+    } else if (userInput == "") {
+  alert("Please enter a city!");
+    }
+  });
+
+  clear.on("click", function() {
+    localStorage.removeItem("recents");
+    recentSearches.length = 0;
+    renderRecents();
+});
